@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
@@ -12,25 +13,33 @@ public class TriangleTest {
 
 
     private static Triangle triangle = new Triangle();
-    int a = 4;
+    int a = 3;
     int b = 4;
     int c = 5;
     double s;
-    double p;
 
+    {
+        try {
+            s = triangle.getSquare(a, b , c);
+        } catch (NonIntResultException e) {
+            e.printStackTrace();
+        }
+    }
+
+    double p;
 
 
     @Test
     void TestSquareValid() {
-        int resulte = 8;
-        Assert.assertEquals();
+        double resulte = 6.0;
+        assertEquals(resulte, s, 0);
     }
 
 
     @Test
     void TestSquareNotValid() {
         int resulte = -2;
-        Assert.assertEquals();
+        assertNotEquals(resulte, s ,0);
 
 
     }
